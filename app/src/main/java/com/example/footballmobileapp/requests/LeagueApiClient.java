@@ -78,6 +78,7 @@ public class LeagueApiClient {
 
                         }else {
                             try {
+                                assert response.errorBody() != null;
                                 Log.v("AllTag", "Error"+response.errorBody().string());
                             } catch (IOException e) {
                                 e.printStackTrace();
