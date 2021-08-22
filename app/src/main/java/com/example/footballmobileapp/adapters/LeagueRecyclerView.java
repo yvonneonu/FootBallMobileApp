@@ -10,12 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.footballmobileapp.R;
 import com.example.footballmobileapp.models.LeagueModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LeagueRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<LeagueModel> leagueModels;
+    private List<LeagueModel> leagueModels = new ArrayList<>();
     private OnLeagueListerner onLeagueListerner;
+
+
 
     public LeagueRecyclerView(OnLeagueListerner onLeagueListerner) {
         this.onLeagueListerner = onLeagueListerner;

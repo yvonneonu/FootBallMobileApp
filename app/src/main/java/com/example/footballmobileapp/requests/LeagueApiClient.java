@@ -50,7 +50,7 @@ public class LeagueApiClient {
         final Future myHandler = AppExecuters.getInstance().networkIO().submit(new Runnable() {
             @Override
             public void run() {
-                Call<Competitions> competitionsCall = ApiClient.getService().getCompetitions("X-Auth-Token: 5e7ed5be1554483cbbe403181ce6225");
+                Call<Competitions> competitionsCall = ApiClient.getService().getCompetitions("X-Auth-Token: dfea7ef6599d45e0a238f362c9d75744");
 
                 competitionsCall.enqueue(new Callback<Competitions>() {
                     @Override
