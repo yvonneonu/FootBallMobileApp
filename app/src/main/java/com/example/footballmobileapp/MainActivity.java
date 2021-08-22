@@ -5,22 +5,21 @@ import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.footballmobileapp.ViewModels.LeagueViewModel;
 import com.example.footballmobileapp.adapters.LeagueRecyclerView;
-import com.example.footballmobileapp.adapters.OnLeagueListerner;
 import com.example.footballmobileapp.models.LeagueModel;
 
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements OnLeagueListerner {
+public class MainActivity extends AppCompatActivity {
 
-    private LeagueViewModel leagueViewModel;
+    private LeagueViewModel viewModel;
+    private List<LeagueModel> leagueViewModel;
     Button button2;
     private RecyclerView recyclerView1;
     private LeagueRecyclerView leagueRecyclerAdapter;
@@ -32,41 +31,58 @@ public class MainActivity extends AppCompatActivity implements OnLeagueListerner
         button2 = findViewById(R.id.button2);
 
 
+
         recyclerView1 = findViewById(R.id.recylerview2);
 
-        leagueViewModel = new ViewModelProvider(this).get(LeagueViewModel.class);
+
+        leagueRecyclerAdapter = new LeagueRecyclerView();
+        recyclerView1.setAdapter(leagueRecyclerAdapter);
+        recyclerView1.setLayoutManager(new LinearLayoutManager(this));
+
+        viewModel = new ViewModelProvider(this).get(LeagueViewModel.class);
 
 
-        ConfigureRecyclerView();
+        viewModel.getlistLiveData().observe(this, leagueModels ->{
 
-        ObserveAnyChange();
-
-
-        searchLeague();
-    }
-
-
-    private void ObserveAnyChange(){
-        leagueViewModel.getlistLiveData().observe(this, new Observer<List<LeagueModel>>() {
-            @Override
-            public void onChanged(List<LeagueModel> leagueModels) {
-                if (leagueModels != null){
-                    for (LeagueModel leagueModel :leagueModels){
-                        Log.v("TAGGY", "ONCHANGE"+leagueModel.getName());
-                        leagueRecyclerAdapter.setLeagueModels(leagueModels);
-                    }
+            leagueViewModel = leagueModels;
+            leagueRecyclerAdapter.setLeagueModels(leagueModels);
                 }
-            }
-        });
 
+                );
+       // ConfigureRecyclerView();
+
+       // ObserveAnyChange();
+
+
+       // searchLeague();
     }
 
-    private void searchLeague(){
-        leagueViewModel.searchLeague();
-    }
+
+//    private void ObserveAnyChange(){
+//        leagueViewModel.getlistLiveData().observe(this, new Observer<List<LeagueModel>>() {
+//            @Override
+//            public void onChanged(List<LeagueModel> leagueModels) {
+//                if (leagueModels != null){
+//                    for (LeagueModel leagueModel :leagueModels){
+//                        Log.d("TAGGY", "ONCHANGE"+leagueModel.getName());
+//                        leagueRecyclerAdapter.setLeagueModels(leagueModels);
+//                        //leagueRecyclerAdapter.setLeagueModels(leagueModels);
+//                        //leagueRecyclerAdapter.notifyDataSetChanged();
+//
+//
+//                    }
+//                }
+//            }
+//        });
+//
+//    }
+
+//    private void searchLeague(){
+//        leagueViewModel.searchLeague();
+//    }
 
     private void ConfigureRecyclerView(){
-        leagueRecyclerAdapter = new LeagueRecyclerView(this);
+       // leagueRecyclerAdapter = new LeagueRecyclerView(this);
         Log.d("recycle", ""+recyclerView1);
         recyclerView1.setAdapter(leagueRecyclerAdapter);
 
@@ -74,15 +90,15 @@ public class MainActivity extends AppCompatActivity implements OnLeagueListerner
 
     }
 
-    @Override
-    public void onLeagueClick(int position) {
-
-    }
-
-    @Override
-    public void onAllLeageCategoryClick(String categoty) {
-
-    }
+//    @Override
+//    public void onLeagueClick(int position) {
+//
+//    }
+//
+//    @Override
+//    public void onAllLeageCategoryClick(String categoty) {
+//
+//    }
 //    private void fetchLeague(){
 //        Call<Competitions> competitionsCall = ApiClient.getService().getCompetitions("X-Auth-Token: 5e7ed5be1554483cbbe403181ce6225");
 //

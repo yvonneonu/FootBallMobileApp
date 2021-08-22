@@ -114,7 +114,7 @@ public class LeagueApiClient {
         @Override
         public void run() {
 
-            Call<Competitions> competitionsCall = ApiClient.getService().getCompetitions("X-Auth-Token: 5e7ed5be1554483cbbe403181ce6225");
+            Call<Competitions> competitionsCall = ApiClient.getService().getCompetitions("X-Auth-Token: 345a424d790a4e2393201f16367a6e46");
 
             competitionsCall.enqueue(new Callback<Competitions>() {
                 @Override
