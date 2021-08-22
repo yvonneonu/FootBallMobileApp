@@ -1,17 +1,20 @@
 package com.example.footballmobileapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.footballmobileapp.ViewModels.LeagueViewModel;
 import com.example.footballmobileapp.adapters.LeagueRecyclerView;
 import com.example.footballmobileapp.models.LeagueModel;
+import com.example.footballmobileapp.models.Team;
+import com.example.footballmobileapp.requests.LeagueApiClient;
 
 import java.util.List;
 
@@ -30,25 +33,78 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button2 = findViewById(R.id.button2);
 
-
-
         recyclerView1 = findViewById(R.id.recylerview2);
 
 
-        leagueRecyclerAdapter = new LeagueRecyclerView();
-        recyclerView1.setAdapter(leagueRecyclerAdapter);
-        recyclerView1.setLayoutManager(new LinearLayoutManager(this));
 
-        viewModel = new ViewModelProvider(this).get(LeagueViewModel.class);
+        LeagueApiClient.getInstance().searhLeagueApi(new LeagueApiClient.LeagueApiClientListener() {
+            @Override
+            public void onLeagueApiClientListener(List<LeagueModel> leagueModels1) {
+                Log.d("modelsss",  ""+leagueModels1.size());
+                leagueRecyclerAdapter = new LeagueRecyclerView(leagueModels1);
+                recyclerView1.setAdapter(leagueRecyclerAdapter);
+                recyclerView1.setLayoutManager(new GridLayoutManager(MainActivity.this, 3));
+
+                leagueRecyclerAdapter.setListener(new LeagueRecyclerView.OnLeagueListerner() {
+                    @Override
+                    public void onLeagueClick(int position) {
+                        LeagueModel leagueModel = leagueModels1.get(position);
+                        int id = leagueModel.getId();
+                        Log.d("compid", ""+id);
+                        Intent intent = new Intent(MainActivity.this, TeamsInvolved.class);
+                        intent.putExtra("competitionId", id);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAllLeageCategoryClick(String categoty) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onTeamApiClientListener(List<Team> teamList) {
+
+            }
+        });
 
 
-        viewModel.getlistLiveData().observe(this, leagueModels ->{
 
-            leagueViewModel = leagueModels;
-            leagueRecyclerAdapter.setLeagueModels(leagueModels);
-                }
 
-                );
+
+
+
+
+
+
+
+//        viewModel = new ViewModelProvider(this).get(LeagueViewModel.class);
+//        viewModel.getlistLiveData().observe(this, new Observer<List<LeagueModel>>() {
+//            @Override
+//            public void onChanged(List<LeagueModel> leagueModels) {
+//                leagueViewModel = leagueModels;
+//                Log.d("vieemodel", ""+leagueModels.size());
+//                leagueRecyclerAdapter.setLeagueModels(leagueViewModel);
+//
+//            }
+//        });
+
+
+//        leagueRecyclerAdapter = new LeagueRecyclerView();
+//        recyclerView1.setAdapter(leagueRecyclerAdapter);
+//        recyclerView1.setLayoutManager(new LinearLayoutManager(this));
+//
+//        viewModel = new ViewModelProvider(this).get(LeagueViewModel.class);
+//
+//
+//        viewModel.getlistLiveData().observe(this, leagueModels ->{
+//
+//            leagueViewModel = leagueModels;
+//            leagueRecyclerAdapter.setLeagueModels(leagueModels);
+//                }
+//
+//                );
        // ConfigureRecyclerView();
 
        // ObserveAnyChange();

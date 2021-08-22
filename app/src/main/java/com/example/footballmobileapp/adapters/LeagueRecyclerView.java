@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.footballmobileapp.R;
@@ -19,6 +20,10 @@ public class LeagueRecyclerView extends RecyclerView.Adapter<LeagueRecyclerView.
     private List<LeagueModel> leagueModels = new ArrayList<>();
     private OnLeagueListerner onLeagueListerner;
 
+    public LeagueRecyclerView(List<LeagueModel> leagueModels) {
+        this.leagueModels = leagueModels;
+    }
+
     @NonNull
     @Override
     public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,8 +36,8 @@ public class LeagueRecyclerView extends RecyclerView.Adapter<LeagueRecyclerView.
     public void onBindViewHolder(@NonNull LeagueRecyclerView.TaskHolder holder, int position) {
 
         final LeagueModel model = leagueModels.get(position);
-        holder.textView.setText(model.getName());
-        holder.textView2.setText(model.getCountryName().getName());
+        holder.textView2.setText(model.getName());
+        holder.textView.setText(model.getCountryName().getName());
         holder.textView4.setText(model.getCurrentSeason().getStartDate());
 
     }
@@ -49,16 +54,42 @@ public class LeagueRecyclerView extends RecyclerView.Adapter<LeagueRecyclerView.
     public class TaskHolder extends RecyclerView.ViewHolder {
 
         TextView textView, textView2, textView4;
+        CardView cardView;
 
         public TaskHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.textView);
             textView2 = itemView.findViewById(R.id.textView2);
        textView4 = itemView.findViewById(R.id.textView4);
+       cardView = itemView.findViewById(R.id.cardview);
 
+       cardView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               if (onLeagueListerner != null){
+                   int pos = getAdapterPosition();
+                   if (pos != RecyclerView.NO_POSITION){
+                       onLeagueListerner.onLeagueClick(pos);
+                   }
+               }
+           }
+       });
         }
+
     }
 
+    public void setListener(OnLeagueListerner onLeagueListerner){
+        this.onLeagueListerner = onLeagueListerner;
+
+
+    }
+
+    public interface OnLeagueListerner {
+        void onLeagueClick(int position);
+
+        void onAllLeageCategoryClick(String categoty);
+
+    }
 
 ////    public LeagueRecyclerView(OnLeagueListerner onLeagueListerner) {
 ////        this.onLeagueListerner = onLeagueListerner;

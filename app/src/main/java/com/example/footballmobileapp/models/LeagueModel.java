@@ -11,6 +11,7 @@ public class LeagueModel {
     @PrimaryKey(autoGenerate = true)
     private int id;
     String name;
+    Team teams;
     @SerializedName("area")
     AreaModel CountryName;
     @SerializedName("currentSeason")
@@ -21,8 +22,16 @@ public class LeagueModel {
     public LeagueModel() {
         CountryName = new AreaModel();
         currentSeason = new CurrentSession();
+        teams = new Team();
     }
 
+    public Team getTeams() {
+        return teams;
+    }
+
+    public void setTeams(Team teams) {
+        this.teams = teams;
+    }
 
     public int getId() {
         return id;

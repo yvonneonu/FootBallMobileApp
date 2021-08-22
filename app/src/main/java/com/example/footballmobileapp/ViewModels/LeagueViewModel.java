@@ -1,5 +1,7 @@
 package com.example.footballmobileapp.ViewModels;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -16,9 +18,11 @@ public class LeagueViewModel extends ViewModel {
         leagueRepository = LeagueRepository.getInstance();
     }
     public LiveData<List<LeagueModel>> getlistLiveData(){
+        Log.d("Leage", "getlistLiveData"+ leagueRepository.getLeauges());
         return leagueRepository.getLeauges();
+
     }
     public void searchLeague(){
-        leagueRepository.searchApi();
+       // leagueRepository.searchApi();
     }
 }
