@@ -69,7 +69,7 @@ public class LeagueApiClient {
 
                             for (LeagueModel model: leagueModels){
 
-                                Log.d("Tag", "allTea" +model.getName());
+                                Log.d("Tag", "allTea" +model.getId());
                                 Log.d("Area", "getAllArea" +model.getCountryName().getName());
                             //    Log.d("Area", "getAllCurrentSeasion" +model.getCurrentSeason().getStartDate());
 
@@ -109,14 +109,16 @@ public class LeagueApiClient {
 
 
     }
+
+  //  public void
     public void showTeams(int id, LeagueApiClientListener leagueApiClientListener){
-        Call<TeamModel> teamModelCall = ApiClient.getService().getParticularCompetition(id, "X-Auth-Token: 345a424d790a4e2393201f16367a6e46");
+        Call<TeamModel> teamModelCall = ApiClient.getService().getParticularCompetition("X-Auth-Token: 345a424d790a4e2393201f16367a6e46", 2000);
         teamModelCall.enqueue(new Callback<TeamModel>() {
             @Override
             public void onResponse(Call<TeamModel> call, Response<TeamModel> response) {
                 if (response.isSuccessful()){
                     TeamModel teams = response.body();
-                    Log.d("modelTeam", ""+teams.getTeams().size());
+//                    Log.d("modelTeam", ""+teams.getTeams().size());
 
                 }
             }
@@ -126,6 +128,9 @@ public class LeagueApiClient {
 
             }
         });
+
+
+
 //        Call<List<Team>> teamsCall = ApiClient.getService().getParticularCompetition(id, "X-Auth-Token: dfea7ef6599d45e0a238f362c9d75744");
 //        teamsCall.enqueue(new Callback<List<Team>>() {
 //            @Override

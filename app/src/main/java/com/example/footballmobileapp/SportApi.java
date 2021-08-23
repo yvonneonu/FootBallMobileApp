@@ -12,6 +12,15 @@ public interface SportApi {
     @GET("v2/competitions")
     Call<Competitions> getCompetitions(@Header("Authorization") String token);
 
+
+   // /v2/matches
+
     @GET("v2/competitions/{id}/teams")
-    Call<TeamModel> getParticularCompetition(@Path("id") int competitionId, @Header("Authorization") String token);
+    Call<TeamModel> getParticularCompetition( @Header("Authorization") String token, @Path("id") int competitionId);
+
+    @GET("v2/competitions/{id}")
+    Call<Competitions> getComp(@Header("Authorization") String token, @Path("id") int competitionId);
+//    @GET("v2/competitions/{id}/teams")
+//    Call<TeamModel> getParticularCompetition( @Header("Authorization") String token, @Path("id") int competitionId);
+    //@Path("id") int competitionIdhttp://api.football-data.org/v2/competitions/2000/teams
 }

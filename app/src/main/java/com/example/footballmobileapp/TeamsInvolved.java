@@ -27,7 +27,7 @@ public class TeamsInvolved extends AppCompatActivity {
         Log.d("teamsId", ""+id);
         recyclerView1 = findViewById(R.id.teamRecylerView);
 
-        LeagueApiClient.getInstance().showTeams(2000, new LeagueApiClient.LeagueApiClientListener() {
+        LeagueApiClient.getInstance().showTeams(2001, new LeagueApiClient.LeagueApiClientListener() {
             @Override
             public void onLeagueApiClientListener(List<LeagueModel> leagueModels1) {
             }

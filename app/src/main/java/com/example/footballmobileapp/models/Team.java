@@ -5,7 +5,8 @@ import com.google.gson.annotations.SerializedName;
 public class Team {
 
 
-    @SerializedName("teams")
+
+    @SerializedName("")
     private String imgUrl;
 
 
