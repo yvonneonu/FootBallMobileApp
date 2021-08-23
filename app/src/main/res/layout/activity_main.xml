@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
+            android:textSize="20sp"
             android:text="Competitions"
             android:textColor="@color/white" />
     </androidx.appcompat.widget.Toolbar>
