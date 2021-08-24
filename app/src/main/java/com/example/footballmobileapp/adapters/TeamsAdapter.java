@@ -9,7 +9,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.example.footballmobileapp.GlideApp;
 import com.example.footballmobileapp.R;
 import com.example.footballmobileapp.models.Team;
 
@@ -35,10 +36,26 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamHolder> 
     public void onBindViewHolder(@NonNull TeamsAdapter.TeamHolder holder, int position) {
 
         Team team = teamList.get(position);
-        Glide.with(context)
-                .asBitmap()
-                .load(team.getImgUrl())
-                .into(holder.imageView);
+
+
+        GlideApp.with(context).load(team.getImgUrl()).apply(RequestOptions.centerCropTransform()).into(holder.imageView);
+
+
+
+//        holder.imageView.S
+//        //holder.imageView.setImageURI(Uri.parse("https://cdn.pixabay.com/photo/2021/08/11/16/39/parking-lot-6538926_1280.jpg"));
+//        Glide.with(context)
+//                .as()
+//                .asBitmap()
+//                .load(Uri.parse("https://cdn.pixabay.com/photo/2021/08/11/16/39/parking-lot-6538926_1280.jpg"))
+//                .into(holder.imageView);
+//        Uri uri = Uri.parse(team.getImgUrl());
+//        //requestBuilder
+//                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+//                // SVG cannot be serialized so it's not worth to cache it
+//                .load(uri)
+//                .into(holder.imageView);
+
     }
 
     @Override

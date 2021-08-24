@@ -17,7 +17,7 @@ public interface SportApi {
    // /v2/matches
 
 
-    @Headers({"X-Authen: dfea7ef6599d45e0a238f362c9d75744"})
+    @Headers({"X-Auth-Token: dfea7ef6599d45e0a238f362c9d75744"})
     @GET("v2/competitions/{id}/teams")
     Call<TeamModel> getParticularCompetition(@Path("id") int competitionId);
 

@@ -3,16 +3,17 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.example.footballmobileapp"
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -59,6 +60,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'androidx.core:core:1.6.0'
+
+
+    implementation 'com.kirich1409.svgplugin:glide4:1.0.0'
+
+    implementation "com.caverock:androidsvg:1.2.1"
+    implementation 'com.android.support:multidex:1.0.3'
 
 
 }

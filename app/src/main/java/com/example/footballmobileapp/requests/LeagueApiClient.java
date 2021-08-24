@@ -120,7 +120,8 @@ public class LeagueApiClient {
             public void onResponse(Call<TeamModel> call, Response<TeamModel> response) {
                 if (response.isSuccessful()){
                     TeamModel teams = response.body();
-//                    Log.d("modelTeam", ""+teams.getTeams().size());
+                   Log.d("modelTeam", ""+teams.getTeams().size());
+                    leagueApiClientListener.onTeamApiClientListener(teams.getTeams());
 
                 }
             }

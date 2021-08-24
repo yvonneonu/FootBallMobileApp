@@ -6,7 +6,7 @@ public class Team {
 
 
 
-    @SerializedName("")
+    @SerializedName("crestUrl")
     private String imgUrl;
 
 

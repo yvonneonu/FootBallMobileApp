@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.footballmobileapp.adapters.TeamsAdapter;
@@ -30,16 +31,22 @@ public class TeamsInvolved extends AppCompatActivity {
         LeagueApiClient.getInstance().showTeams(2001, new LeagueApiClient.LeagueApiClientListener() {
             @Override
             public void onLeagueApiClientListener(List<LeagueModel> leagueModels1) {
+
+                Log.d("teamsId", "leag");
             }
 
             @Override
             public void onTeamApiClientListener(List<Team> teamList) {
                 Log.d("fetctheTeam", ""+teamList.size());
+               teamsAdapter = new TeamsAdapter(teamList, TeamsInvolved.this);
+               recyclerView1.setAdapter(teamsAdapter);
+               recyclerView1.setLayoutManager(new GridLayoutManager(TeamsInvolved.this, 3));
 
+               teamList.get(1).getImgUrl();
+               Log.d("imge", teamList.get(1).getImgUrl());
 
             }
         });
-
 
 
 
