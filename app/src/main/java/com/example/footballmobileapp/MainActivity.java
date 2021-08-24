@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLeagueApiClientListener(List<LeagueModel> leagueModels1) {
                 Log.d("modelsss",  ""+leagueModels1.size());
-                if (leagueModels1.size() > 0){
+
                     progressBar.setVisibility(View.GONE);
-                }
+
 
 
 

@@ -46,9 +46,9 @@ public class TeamsInvolved extends AppCompatActivity {
             @Override
             public void onTeamApiClientListener(List<Team> teamList) {
                 Log.d("fetctheTeam", ""+teamList.size());
-                if (teamList.size() > 0){
+
                     progressBar.setVisibility(View.GONE);
-                }
+
                teamsAdapter = new TeamsAdapter(teamList, TeamsInvolved.this);
                recyclerView1.setAdapter(teamsAdapter);
                recyclerView1.setLayoutManager(new GridLayoutManager(TeamsInvolved.this, 3));

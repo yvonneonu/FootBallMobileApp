@@ -46,7 +46,7 @@ public class ParticularAdapter extends RecyclerView.Adapter<ParticularAdapter.Pa
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("YY/MM/dd");
 
-        holder.dateOfBirth.setText("Time: " + dateFormat.format(date));
+        holder.dateOfBirth.setText(dateFormat.format(date));
     }
 
     @Override
