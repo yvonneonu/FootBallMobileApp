@@ -114,7 +114,7 @@ public class LeagueApiClient {
 
   //  public void
     public void showTeams(int id, LeagueApiClientListener leagueApiClientListener){
-        Call<TeamModel> teamModelCall = ApiClient.getService().getParticularCompetition( 2000);
+        Call<TeamModel> teamModelCall = ApiClient.getService().getParticularCompetition( id);
         teamModelCall.enqueue(new Callback<TeamModel>() {
             @Override
             public void onResponse(Call<TeamModel> call, Response<TeamModel> response) {
