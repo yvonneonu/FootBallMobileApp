@@ -1,5 +1,6 @@
 package com.example.footballmobileapp;
 
+import com.example.footballmobileapp.models.ParticularTeam;
 import com.example.footballmobileapp.models.TeamModel;
 
 import retrofit2.Call;
@@ -26,6 +27,11 @@ public interface SportApi {
 
     @GET("v2/competitions/{id}")
     Call<Competitions> getComp(@Header("Authorization") String token, @Path("id") int competitionId);
+
+
+    @Headers({"X-Auth-Token: dfea7ef6599d45e0a238f362c9d75744"})
+    @GET("v2/teams/{id}")
+    Call<ParticularTeam> getTeam(@Path("id") int teamId);
 //    @GET("v2/competitions/{id}/teams")
 //    Call<TeamModel> getParticularCompetition( @Header("Authorization") String token, @Path("id") int competitionId);
     //@Path("id") int competitionIdhttp://api.football-data.org/v2/competitions/2000/teams

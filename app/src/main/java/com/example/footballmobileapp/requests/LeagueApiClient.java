@@ -6,6 +6,7 @@ import com.example.footballmobileapp.ApiClient;
 import com.example.footballmobileapp.AppExecuters;
 import com.example.footballmobileapp.Competitions;
 import com.example.footballmobileapp.models.LeagueModel;
+import com.example.footballmobileapp.models.ParticularTeam;
 import com.example.footballmobileapp.models.Team;
 import com.example.footballmobileapp.models.TeamModel;
 
@@ -40,7 +41,25 @@ public class LeagueApiClient {
 //        return mLeagues;
 //    }
 
+public  void showParticularTeam(LeagueApiClientListener teamPaticularListener){
+        Call<ParticularTeam> particularTeamCall = ApiClient.getService().getTeam(18);
+        particularTeamCall.enqueue(new Callback<ParticularTeam>() {
+            @Override
+            public void onResponse(Call<ParticularTeam> call, Response<ParticularTeam> response) {
 
+                if (response.isSuccessful()){
+                    ParticularTeam particularTeam = response.body();
+                    particularTeam.getEmail();
+                    teamPaticularListener.onParticularTeam(particularTeam);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParticularTeam> call, Throwable t) {
+
+            }
+        });
+}
     public void searhLeagueApi(LeagueApiClientListener leagueApiClientListener){
         if (retrieveLeagueRunnable != null){
             retrieveLeagueRunnable = null;
@@ -245,6 +264,8 @@ public class LeagueApiClient {
        void onLeagueApiClientListener(List<LeagueModel> leagueModels1);
 
        void onTeamApiClientListener(List<Team> teamList);
+
+       void  onParticularTeam(ParticularTeam particularTeamList);
     }
 
 }

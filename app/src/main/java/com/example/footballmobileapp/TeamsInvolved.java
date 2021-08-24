@@ -1,5 +1,6 @@
 package com.example.footballmobileapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.footballmobileapp.adapters.TeamsAdapter;
 import com.example.footballmobileapp.models.LeagueModel;
+import com.example.footballmobileapp.models.ParticularTeam;
 import com.example.footballmobileapp.models.Team;
 import com.example.footballmobileapp.requests.LeagueApiClient;
 
@@ -45,10 +47,29 @@ public class TeamsInvolved extends AppCompatActivity {
                teamList.get(1).getImgUrl();
                Log.d("imge", teamList.get(1).getImgUrl());
 
+                teamsAdapter.teamResponder(new TeamsAdapter.OnParticularListener() {
+                    @Override
+                    public void onParticularClick(int poistion) {
+
+                        Team team = teamList.get(poistion);
+                        int id = team.getId();
+                        Intent intent = new Intent(TeamsInvolved.this, LastActivtiy.class);
+                        intent.putExtra("teamsid", id);
+                        Log.d("particularid", ""+id);
+                        startActivity(intent);
+                    }
+                });
+
+            }
+
+            @Override
+            public void onParticularTeam(ParticularTeam particularTeamList) {
+
             }
         });
 
 
-
     }
+
+
 }

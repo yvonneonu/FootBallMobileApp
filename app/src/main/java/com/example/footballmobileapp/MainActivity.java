@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.footballmobileapp.ViewModels.LeagueViewModel;
 import com.example.footballmobileapp.adapters.LeagueRecyclerView;
 import com.example.footballmobileapp.models.LeagueModel;
+import com.example.footballmobileapp.models.ParticularTeam;
 import com.example.footballmobileapp.models.Team;
 import com.example.footballmobileapp.requests.LeagueApiClient;
 
@@ -65,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTeamApiClientListener(List<Team> teamList) {
+
+            }
+
+            @Override
+            public void onParticularTeam(ParticularTeam particularTeamList) {
 
             }
         });

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -19,6 +20,7 @@ import java.util.List;
 public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamHolder> {
     List<Team> teamList;
     Context context;
+    OnParticularListener onParticularListener;
 
     public TeamsAdapter(List<Team> teamList, Context context) {
         this.teamList = teamList;
@@ -37,26 +39,17 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamHolder> 
 
         Team team = teamList.get(position);
 
+        if (team.getImgUrl() != null){
+           if (!team.getImgUrl().isEmpty()){
+               GlideApp.with(context).load(team.getImgUrl()).apply(RequestOptions.centerCropTransform()).into(holder.imageView);
+           }
 
-        GlideApp.with(context).load(team.getImgUrl()).apply(RequestOptions.centerCropTransform()).into(holder.imageView);
+        }
 
 
-
-//        holder.imageView.S
-//        //holder.imageView.setImageURI(Uri.parse("https://cdn.pixabay.com/photo/2021/08/11/16/39/parking-lot-6538926_1280.jpg"));
-//        Glide.with(context)
-//                .as()
-//                .asBitmap()
-//                .load(Uri.parse("https://cdn.pixabay.com/photo/2021/08/11/16/39/parking-lot-6538926_1280.jpg"))
-//                .into(holder.imageView);
-//        Uri uri = Uri.parse(team.getImgUrl());
-//        //requestBuilder
-//                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-//                // SVG cannot be serialized so it's not worth to cache it
-//                .load(uri)
-//                .into(holder.imageView);
 
     }
+
 
     @Override
     public int getItemCount() {
@@ -66,9 +59,35 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamHolder> 
     public class TeamHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
+        CardView cardView;
+
         public TeamHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.teamsmg);
+            cardView = itemView.findViewById(R.id.cardViewTeams);
+
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onParticularListener != null){
+                        int pos = getAdapterPosition();
+                        if (pos != RecyclerView.NO_POSITION){
+                            onParticularListener.onParticularClick(pos);
+                        }
+                    }
+                }
+            });
+
+
         }
+    }
+
+    public void teamResponder(OnParticularListener onParticularListener1){
+        this.onParticularListener = onParticularListener1;
+
+
+    }
+   public interface OnParticularListener{
+        void onParticularClick(int poistion);
     }
 }
