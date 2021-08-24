@@ -42,12 +42,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ProgressBar
+                android:id="@+id/imagePogress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -154,7 +164,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="20dp"
                         android:text="Phone number:"
                         android:textColor="@color/black"
                         android:textSize="15sp"
@@ -257,9 +267,21 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:text="Team Players"
+                android:textStyle="bold"
                 android:textColor="@android:color/holo_green_dark"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+            <ProgressBar
+                android:id="@+id/progre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="138dp"
+                app:layout_constraintBottom_toBottomOf="@+id/yivon"
+                app:layout_constraintEnd_toEndOf="@+id/yivon"
+                app:layout_constraintStart_toStartOf="@+id/yivon"
+                app:layout_constraintTop_toTopOf="@+id/yivon" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/yivon"

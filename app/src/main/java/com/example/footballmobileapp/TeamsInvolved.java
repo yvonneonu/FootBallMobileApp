@@ -3,6 +3,8 @@ package com.example.footballmobileapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -21,6 +23,8 @@ public class TeamsInvolved extends AppCompatActivity {
     private int id;
     private RecyclerView recyclerView1;
     private TeamsAdapter teamsAdapter;
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +33,9 @@ public class TeamsInvolved extends AppCompatActivity {
         id = getIntent().getIntExtra("competitionId", -1);
         Log.d("teamsId", ""+id);
         recyclerView1 = findViewById(R.id.teamRecylerView);
+        progressBar = findViewById(R.id.progress1);
 
+        progressBar.setVisibility(View.VISIBLE);
         LeagueApiClient.getInstance().showTeams(2001, new LeagueApiClient.LeagueApiClientListener() {
             @Override
             public void onLeagueApiClientListener(List<LeagueModel> leagueModels1) {
@@ -40,6 +46,7 @@ public class TeamsInvolved extends AppCompatActivity {
             @Override
             public void onTeamApiClientListener(List<Team> teamList) {
                 Log.d("fetctheTeam", ""+teamList.size());
+                progressBar.setVisibility(View.GONE);
                teamsAdapter = new TeamsAdapter(teamList, TeamsInvolved.this);
                recyclerView1.setAdapter(teamsAdapter);
                recyclerView1.setLayoutManager(new GridLayoutManager(TeamsInvolved.this, 3));

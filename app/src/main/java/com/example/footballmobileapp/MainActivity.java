@@ -3,7 +3,9 @@ package com.example.footballmobileapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -27,16 +29,21 @@ public class MainActivity extends AppCompatActivity {
     Button button2;
     private RecyclerView recyclerView1;
     private LeagueRecyclerView leagueRecyclerAdapter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        progressBar = findViewById(R.id.progress);
 
         recyclerView1 = findViewById(R.id.recylerview2);
 
 
+
+
+        progressBar.setVisibility(View.VISIBLE);
 
         LeagueApiClient.getInstance().searhLeagueApi(new LeagueApiClient.LeagueApiClientListener() {
             @Override
@@ -52,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         LeagueModel leagueModel = leagueModels1.get(position);
                         int id = leagueModel.getId();
                         Log.d("compid", ""+id);
+                        progressBar.setVisibility(View.GONE);
                         Intent intent = new Intent(MainActivity.this, TeamsInvolved.class);
                         intent.putExtra("competitionId", id);
                         startActivity(intent);

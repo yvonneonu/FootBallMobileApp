@@ -2,7 +2,9 @@ package com.example.footballmobileapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +27,7 @@ public class LastActivtiy extends AppCompatActivity {
     private ImageView image;
     private RecyclerView recyclerView;
     private ParticularAdapter particularAdapter;
+    private ProgressBar progressBar, progressBar1;
 
 
 
@@ -42,9 +45,13 @@ public class LastActivtiy extends AppCompatActivity {
         email = findViewById(R.id.email);
         color = findViewById(R.id.color);
         recyclerView = findViewById(R.id.yivon);
+        progressBar = findViewById(R.id.progre);
+        progressBar1 = findViewById(R.id.imagePogress);
+
 
 
         id = getIntent().getIntExtra("teamsid", -1);
+
 
 
         LeagueApiClient.getInstance().showParticularTeam(new LeagueApiClient.LeagueApiClientListener() {
@@ -62,8 +69,17 @@ public class LastActivtiy extends AppCompatActivity {
             public void onParticularTeam(ParticularTeam particularTeamList) {
                 Log.d("particular", particularTeamList.getName());
 
+                progressBar.setVisibility(View.INVISIBLE);
+                progressBar1.setVisibility(View.VISIBLE);
                 founded.setText(particularTeamList.getFounded());
-                GlideApp.with(LastActivtiy.this).load(particularTeamList.getCrestUrl()).apply(RequestOptions.centerCropTransform()).into(image);
+                if (image != null){
+                    GlideApp.with(LastActivtiy.this).load(particularTeamList.getCrestUrl()).apply(RequestOptions.centerCropTransform()).into(image);
+
+                    progressBar1.setVisibility(View.GONE);
+                }else {
+                    progressBar1.setVisibility(View.VISIBLE);
+
+                }
                 nickeName.setText(particularTeamList.getShortName());
                 address.setText(particularTeamList.getAddress());
                 phone.setText(particularTeamList.getPhone());
@@ -71,9 +87,15 @@ public class LastActivtiy extends AppCompatActivity {
                 email.setText(particularTeamList.getEmail());
                 color.setText(particularTeamList.getClubColors());
 
-                particularAdapter = new ParticularAdapter(particularTeamList.getSquad(), LastActivtiy.this);
-                recyclerView.setLayoutManager(new LinearLayoutManager(LastActivtiy.this));
-                recyclerView.setAdapter(particularAdapter);
+                if (recyclerView != null){
+                    progressBar.setVisibility(View.GONE);
+                    particularAdapter = new ParticularAdapter(particularTeamList.getSquad(), LastActivtiy.this);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(LastActivtiy.this));
+                    recyclerView.setAdapter(particularAdapter);
+                }else {
+                    progressBar.setVisibility(View.VISIBLE);
+                }
+
 
 
 
