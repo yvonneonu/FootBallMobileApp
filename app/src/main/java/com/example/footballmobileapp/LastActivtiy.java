@@ -43,7 +43,7 @@ public class LastActivtiy extends AppCompatActivity {
         phone = findViewById(R.id.textView14);
         website = findViewById(R.id.website);
         email = findViewById(R.id.email);
-        color = findViewById(R.id.color);
+       // color = findViewById(R.id.color);
         recyclerView = findViewById(R.id.yivon);
         progressBar = findViewById(R.id.progre);
         progressBar1 = findViewById(R.id.imagePogress);
@@ -85,7 +85,7 @@ public class LastActivtiy extends AppCompatActivity {
                 phone.setText(particularTeamList.getPhone());
                 website.setText(particularTeamList.getWebsite());
                 email.setText(particularTeamList.getEmail());
-                color.setText(particularTeamList.getClubColors());
+                //color.setText(particularTeamList.getClubColors());
 
                 if (recyclerView != null){
                     progressBar.setVisibility(View.GONE);
