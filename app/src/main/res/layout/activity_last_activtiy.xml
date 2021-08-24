@@ -86,20 +86,24 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
                         android:text="Founded:"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/textView7"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/textView7"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="50dp"
+                        android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
                         android:text="01 May 1886"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView6"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -109,20 +113,25 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
                         android:text="NickName:"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/textView9"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
                     <TextView
                         android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
                         android:text="M'gladbach"
-                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView8"
                         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
                     <TextView
@@ -131,20 +140,25 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
                         android:text="Address"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/textView11"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
                     <TextView
                         android:id="@+id/textView11"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:text="Hennes-Weisweiler-Allee 1\nMonchen gladbach 41179"
-                        app:layout_constraintStart_toStartOf="@+id/textView9"
+                        android:layout_marginEnd="32dp"
+                        android:text="41179"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView10"
                         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
                     <TextView
@@ -152,21 +166,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="28dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
                         android:text="Phone number:"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/textView14"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
                     <TextView
                         android:id="@+id/textView14"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
                         android:text="+49(02161)92930"
-                        app:layout_constraintStart_toStartOf="@+id/textView11"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView12"
                         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
                     <TextView
@@ -175,35 +194,77 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
                         android:text="Website"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/website"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
                     <TextView
                         android:id="@+id/website"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
                         android:text="http:www.borussia.de"
-                        app:layout_constraintStart_toStartOf="@+id/textView14"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView16"
                         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
                     <TextView
+                        android:id="@+id/textView13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:layout_marginBottom="24dp"
+                        android:text="Email:"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
+                        android:text="http:www.borussia.de"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/website" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
                         android:text="Club colors:"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                    <TextView
+                        android:id="@+id/color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="http:www.borussia.de"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/email" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -220,20 +281,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-            <androidx.cardview.widget.CardView
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
-                app:cardElevation="10dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView17">
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
 
-
-            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

@@ -18,7 +18,7 @@ import java.util.List;
 public class LastActivtiy extends AppCompatActivity {
 
     int id;
-    private TextView founded, nickeName, address, phone, website;
+    private TextView founded, nickeName, address, phone, website, email, color;
     private ImageView image;
 
 
@@ -33,6 +33,9 @@ public class LastActivtiy extends AppCompatActivity {
         address = findViewById(R.id.textView11);
         phone = findViewById(R.id.textView14);
         website = findViewById(R.id.website);
+        email = findViewById(R.id.email);
+        color = findViewById(R.id.color);
+
 
         id = getIntent().getIntExtra("teamsid", -1);
 
@@ -57,6 +60,8 @@ public class LastActivtiy extends AppCompatActivity {
                 address.setText(particularTeamList.getAddress());
                 phone.setText(particularTeamList.getPhone());
                 website.setText(particularTeamList.getWebsite());
+                email.setText(particularTeamList.getEmail());
+                color.setText(particularTeamList.getClubColors());
 
             }
         });
