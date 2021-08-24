@@ -49,17 +49,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLeagueApiClientListener(List<LeagueModel> leagueModels1) {
                 Log.d("modelsss",  ""+leagueModels1.size());
+                if (leagueModels1.size() > 0){
+                    progressBar.setVisibility(View.GONE);
+                }
+
+
+
                 leagueRecyclerAdapter = new LeagueRecyclerView(leagueModels1);
                 recyclerView1.setAdapter(leagueRecyclerAdapter);
                 recyclerView1.setLayoutManager(new GridLayoutManager(MainActivity.this, 3));
 
+
                 leagueRecyclerAdapter.setListener(new LeagueRecyclerView.OnLeagueListerner() {
                     @Override
                     public void onLeagueClick(int position) {
+
                         LeagueModel leagueModel = leagueModels1.get(position);
                         int id = leagueModel.getId();
                         Log.d("compid", ""+id);
-                        progressBar.setVisibility(View.GONE);
                         Intent intent = new Intent(MainActivity.this, TeamsInvolved.class);
                         intent.putExtra("competitionId", id);
                         startActivity(intent);

@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.footballmobileapp.R;
 import com.example.footballmobileapp.models.Squad;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class ParticularAdapter extends RecyclerView.Adapter<ParticularAdapter.ParicularHolder> {
@@ -39,7 +41,12 @@ public class ParticularAdapter extends RecyclerView.Adapter<ParticularAdapter.Pa
         holder.textView.setText(squad.getName());
         holder.position.setText(squad.getPosition());
         holder.country.setText(squad.getNationality());
-        holder.dateOfBirth.setText(squad.getDateOfBirth());
+       // holder.dateOfBirth.setText(squad.getDateOfBirth());
+
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YY/MM/dd");
+
+        holder.dateOfBirth.setText("Time: " + dateFormat.format(date));
     }
 
     @Override

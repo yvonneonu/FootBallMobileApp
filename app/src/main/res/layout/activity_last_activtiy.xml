@@ -46,7 +46,7 @@
                 android:id="@+id/imagePogress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                app:layout_constraintBottom_toBottomOf="@+id/yivon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="@+id/imageView2" />
@@ -304,16 +304,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-            <ProgressBar
-                android:id="@+id/progre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="138dp"
-                app:layout_constraintBottom_toBottomOf="@+id/yivon"
-                app:layout_constraintEnd_toEndOf="@+id/yivon"
-                app:layout_constraintStart_toStartOf="@+id/yivon"
-                app:layout_constraintTop_toTopOf="@+id/yivon" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/yivon"
