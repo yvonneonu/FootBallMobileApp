@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +36,10 @@ public class ParticularAdapter extends RecyclerView.Adapter<ParticularAdapter.Pa
     public void onBindViewHolder(@NonNull ParticularAdapter.ParicularHolder holder, int position) {
 
         Squad squad = squadList.get(position);
+        holder.textView.setText(squad.getName());
+        holder.position.setText(squad.getPosition());
+        holder.country.setText(squad.getNationality());
+        holder.dateOfBirth.setText(squad.getDateOfBirth());
     }
 
     @Override
@@ -44,8 +49,15 @@ public class ParticularAdapter extends RecyclerView.Adapter<ParticularAdapter.Pa
 
     public class ParicularHolder extends RecyclerView.ViewHolder {
 
+        TextView textView, position, country, dateOfBirth;
+
         public ParicularHolder(@NonNull View itemView) {
             super(itemView);
+            textView = itemView.findViewById(R.id.textView18);
+            position = itemView.findViewById(R.id.textView20);
+            country = itemView.findViewById(R.id.textView19);
+            dateOfBirth = itemView.findViewById(R.id.textView21);
+
         }
     }
 }

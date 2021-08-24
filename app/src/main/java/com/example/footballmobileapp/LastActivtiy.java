@@ -6,8 +6,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.request.RequestOptions;
+import com.example.footballmobileapp.adapters.ParticularAdapter;
 import com.example.footballmobileapp.models.LeagueModel;
 import com.example.footballmobileapp.models.ParticularTeam;
 import com.example.footballmobileapp.models.Team;
@@ -20,6 +23,9 @@ public class LastActivtiy extends AppCompatActivity {
     int id;
     private TextView founded, nickeName, address, phone, website, email, color;
     private ImageView image;
+    private RecyclerView recyclerView;
+    private ParticularAdapter particularAdapter;
+
 
 
 
@@ -35,9 +41,11 @@ public class LastActivtiy extends AppCompatActivity {
         website = findViewById(R.id.website);
         email = findViewById(R.id.email);
         color = findViewById(R.id.color);
+        recyclerView = findViewById(R.id.yivon);
 
 
         id = getIntent().getIntExtra("teamsid", -1);
+
 
         LeagueApiClient.getInstance().showParticularTeam(new LeagueApiClient.LeagueApiClientListener() {
             @Override
@@ -62,6 +70,13 @@ public class LastActivtiy extends AppCompatActivity {
                 website.setText(particularTeamList.getWebsite());
                 email.setText(particularTeamList.getEmail());
                 color.setText(particularTeamList.getClubColors());
+
+                particularAdapter = new ParticularAdapter(particularTeamList.getSquad(), LastActivtiy.this);
+                recyclerView.setLayoutManager(new LinearLayoutManager(LastActivtiy.this));
+                recyclerView.setAdapter(particularAdapter);
+
+
+
 
             }
         });
