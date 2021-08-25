@@ -103,6 +103,7 @@
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView7"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/textView7" />
 
@@ -121,13 +122,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="NickName:"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView9"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                        app:layout_constraintTop_toTopOf="@+id/textView9" />
 
                     <TextView
                         android:id="@+id/textView9"
