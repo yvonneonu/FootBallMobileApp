@@ -36,7 +36,7 @@ public class TeamsInvolved extends AppCompatActivity {
         progressBar = findViewById(R.id.progress1);
 
         progressBar.setVisibility(View.VISIBLE);
-        LeagueApiClient.getInstance().showTeams(2001, new LeagueApiClient.LeagueApiClientListener() {
+        LeagueApiClient.getInstance().showTeams(id, new LeagueApiClient.LeagueApiClientListener() {
             @Override
             public void onLeagueApiClientListener(List<LeagueModel> leagueModels1) {
 
@@ -46,9 +46,6 @@ public class TeamsInvolved extends AppCompatActivity {
             @Override
             public void onTeamApiClientListener(List<Team> teamList) {
                 Log.d("fetctheTeam", ""+teamList.size());
-
-                    progressBar.setVisibility(View.GONE);
-
                teamsAdapter = new TeamsAdapter(teamList, TeamsInvolved.this);
                recyclerView1.setAdapter(teamsAdapter);
                recyclerView1.setLayoutManager(new GridLayoutManager(TeamsInvolved.this, 3));
@@ -67,7 +64,9 @@ public class TeamsInvolved extends AppCompatActivity {
                         Log.d("particularid", ""+id);
                         startActivity(intent);
                     }
+
                 });
+
 
             }
 
@@ -75,7 +74,7 @@ public class TeamsInvolved extends AppCompatActivity {
             public void onParticularTeam(ParticularTeam particularTeamList) {
 
             }
-        });
+        }, TeamsInvolved.this, progressBar);
 
 
     }

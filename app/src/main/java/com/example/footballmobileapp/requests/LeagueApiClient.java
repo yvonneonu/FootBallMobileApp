@@ -1,6 +1,10 @@
 package com.example.footballmobileapp.requests;
 
+import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.footballmobileapp.ApiClient;
 import com.example.footballmobileapp.AppExecuters;
@@ -132,21 +136,29 @@ public  void showParticularTeam(LeagueApiClientListener teamPaticularListener){
     //"X-Auth-Token: 345a424d790a4e2393201f16367a6e46",
 
   //  public void
-    public void showTeams(int id, LeagueApiClientListener leagueApiClientListener){
+    public void showTeams(int id, LeagueApiClientListener leagueApiClientListener, Context context, ProgressBar progressBar){
         Call<TeamModel> teamModelCall = ApiClient.getService().getParticularCompetition( id);
         teamModelCall.enqueue(new Callback<TeamModel>() {
             @Override
             public void onResponse(Call<TeamModel> call, Response<TeamModel> response) {
-                if (response.isSuccessful()){
-                    TeamModel teams = response.body();
-                   Log.d("modelTeam", ""+teams.getTeams().size());
-                    leagueApiClientListener.onTeamApiClientListener(teams.getTeams());
+                if (!response.isSuccessful()){
+                    Toast.makeText(context, response.message(), Toast.LENGTH_LONG).show();
 
+
+                    progressBar.setVisibility(View.GONE);
+                    return;
                 }
+                progressBar.setVisibility(View.GONE);
+
+                TeamModel teams = response.body();
+                Log.d("modelTeam", ""+teams.getTeams().size());
+                leagueApiClientListener.onTeamApiClientListener(teams.getTeams());
+
             }
 
             @Override
             public void onFailure(Call<TeamModel> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
 
             }
         });
