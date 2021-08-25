@@ -38,7 +38,10 @@ public class LeagueRecyclerView extends RecyclerView.Adapter<LeagueRecyclerView.
         final LeagueModel model = leagueModels.get(position);
         holder.textView2.setText(model.getName());
         holder.textView.setText(model.getCountryName().getName());
-        holder.textView4.setText(model.getCurrentSeason().getStartDate());
+        if (model.getCurrentSeason() != null){
+            holder.textView4.setText(model.getCurrentSeason().getStartDate());
+        }
+
 
     }
 

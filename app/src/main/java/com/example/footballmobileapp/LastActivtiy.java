@@ -102,4 +102,8 @@ public class LastActivtiy extends AppCompatActivity {
         });
 
     }
+
+    public void back(View view) {
+        finish();
+    }
 }
