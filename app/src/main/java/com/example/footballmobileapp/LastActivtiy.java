@@ -23,7 +23,7 @@ import java.util.List;
 public class LastActivtiy extends AppCompatActivity {
 
     int id;
-    private TextView founded, nickeName, address, phone, website, email, color;
+    private TextView founded, nickeName, address, phone, website, email, teamNmae;
     private ImageView image;
     private RecyclerView recyclerView;
     private ParticularAdapter particularAdapter;
@@ -47,6 +47,7 @@ public class LastActivtiy extends AppCompatActivity {
        // color = findViewById(R.id.color);
         recyclerView = findViewById(R.id.yivon);
         progressBar1 = findViewById(R.id.imagePogress);
+        teamNmae = findViewById(R.id.teamname);
 
 
 
@@ -86,6 +87,7 @@ public class LastActivtiy extends AppCompatActivity {
                 phone.setText(particularTeamList.getPhone());
                 website.setText(particularTeamList.getWebsite());
                 email.setText(particularTeamList.getEmail());
+                teamNmae.setText(particularTeamList.getName());
                 //color.setText(particularTeamList.getClubColors());
 
 

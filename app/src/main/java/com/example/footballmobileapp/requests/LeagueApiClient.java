@@ -142,7 +142,8 @@ public  void showParticularTeam(int id, LeagueApiClientListener teamPaticularLis
             @Override
             public void onResponse(Call<TeamModel> call, Response<TeamModel> response) {
                 if (!response.isSuccessful()){
-                    Toast.makeText(context, response.message(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "The resource you are looking for is restricted", Toast.LENGTH_LONG).show();
+                    Log.d("errormessaging", response.message());
 
 
                     progressBar.setVisibility(View.GONE);
