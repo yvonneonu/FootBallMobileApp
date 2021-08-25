@@ -45,8 +45,8 @@ public class LeagueApiClient {
 //        return mLeagues;
 //    }
 
-public  void showParticularTeam(LeagueApiClientListener teamPaticularListener){
-        Call<ParticularTeam> particularTeamCall = ApiClient.getService().getTeam(18);
+public  void showParticularTeam(int id, LeagueApiClientListener teamPaticularListener){
+        Call<ParticularTeam> particularTeamCall = ApiClient.getService().getTeam(id);
         particularTeamCall.enqueue(new Callback<ParticularTeam>() {
             @Override
             public void onResponse(Call<ParticularTeam> call, Response<ParticularTeam> response) {

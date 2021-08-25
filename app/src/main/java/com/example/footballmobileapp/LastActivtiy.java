@@ -56,7 +56,8 @@ public class LastActivtiy extends AppCompatActivity {
 
         progressBar1.setVisibility(View.VISIBLE);
 
-        LeagueApiClient.getInstance().showParticularTeam(new LeagueApiClient.LeagueApiClientListener() {
+
+        LeagueApiClient.getInstance().showParticularTeam(id, new LeagueApiClient.LeagueApiClientListener() {
             @Override
             public void onLeagueApiClientListener(List<LeagueModel> leagueModels1) {
 
